@@ -1,0 +1,99 @@
+\documentclass[fontsize=12pt,a4paper]{article}
+\usepackage{wallpaper}
+\usepackage[sfdefault]{roboto}
+\usepackage[T1]{fontenc}
+\ULCornerWallPaper{1}{letterhead.pdf}
+\usepackage[a4paper,top=1.16666in,bottom=2.666666in,left=0.5in,right=0.5in,includehead,includefoot]{geometry}
+\pagenumbering{gobble}
+\usepackage{xcolor}
+\makeatletter
+\newcommand{\globalcolor}[1]{\color{#1}\global\let\default@color\current@color}
+\definecolor{dark}{HTML}{1a2631}
+\makeatother
+\AtBeginDocument{\globalcolor{dark}}
+\usepackage{epigraph}
+\begin{document}
+
+\section*{Collaboration with Visitours}
+
+This document was prepared to give an overview of what Custom Programming Solutions could offer Visitours in their goal to build a decentralised travel rewards platform. It was written after extensively reviewing the whitepaper and our notes from the last meeting. This document is structured into two parts. The first part introduces our areas of expertise and explores their overlap with those of the project; and the second identifies some initial key issues and points of deliberation that we have identified in the whitepaper and could help solve with our expertise. This document is preliminary in nature and does not attempt by any means to provide a complete analysis of the situation at hand; but rather, it presents a starting point on what we could offer to this project.
+
+\subsection*{Part One: What Custom Programming Solutions Can Offer}
+
+We believe that a collaboration with Visitours would be very valuable for both parties and that we have a lot to contribute to the platform and to the project as a whole. Our main areas of expertise lie in game theory, mathematical optimization, blockchain technology, cryptography and cryptosystems, distributed systems, high-level software engineering, and DevOps. We have years of experience in analysing systems from both a game theoretic, as well as an abstract mathematical point of view, and assessing their soundness under abuse and manipulation. We also specialise in the design and study of blockchain and the technology behind it; both the theoretical and practical aspects of it; such as the low-level implementation details of the cryptographic primitives used, all the way to the overarching problems of trust and verification underpinning every blockchain.
+
+By the nature of the problem being solved, Visitours faces many challenges related to creating a platform where every user is incentivised to contribute fairly and honestly, and those abusing the system are de-incentivised to do so to a maximal extent. We can leverage our deep expertise in game theory and mathematical optimization to guide Visitours in identifying and designing mathematically sound incentive structures, in order to architect a platform that securely and scalably guarantees each user an enjoyable and rewarding experience while keeping bad actors away. We do this through certain Monte Carlo simulation algorithms, as well as by analysing the Nash equilibria and analytically studying how certain behaviours and actions could be strategically incentivised or de-incentivised in order to make them globally optimal. Given the decentralised, immutable nature of the platform, this is very much a non-trivial task and requires careful design and simulation to perfect.
+
+Our expert knowledge in blockchain and distributed systems also allows us to provide guidance and consultation to Visitours in matters specific and unique to blockchain. There are a plethora of challenges that arise in the process of decentralising and radically reinventing a traditional service, and without the right background and experience with similar projects, these can often become intractable roadblocks that drastically slow down progress, or even halt it altogether. We can offer Visitours this expertise and direction in cases like these by applying our prior experience and background knowledge to the problem at hand, and making sure these difficulties are not roadblocks to progress.
+
+We have vast experience in the design and deployment of sophisticated systems architectures to support both centralised and decentralised platforms on a wide set of infrastructure choices. We have previously worked on large cryptocurrency deployments with a security-first emphasis. Designing and deploying a secure, scalable system that uses young, often unproven technology is a difficult task. It requires an in-depth understanding of the underlying architecture and requirements of the project, as well as a fluent comprehension of the best practices procedures associated with DevOps and the infrastructure being utilised.
+
+Finally, Custom Programming Solutions can provide Visitours with practical assistance in designing and implementing the platform, and establishing and growing a capable team of developers able to tackle the problems at hand. We can provide expertise in hiring and staffing the design and development effort by leveraging our expansive professional networks both in Melbourne and internationally. It is often hard to hire the right individuals with the correct mindset, particularly for projects with very demanding requirements and cutting-edge technology.
+
+\subsection*{Part Two: Selected Problems in the Platform Design}
+
+Through a preliminary reading of the whitepaper, we have identified the three key issues that will require considerable deliberation and careful design decisions.
+
+\subsubsection*{The question of identity}
+
+There is an inherent question of identity underlying the Visitours platform. Through the nature of the platform and service offered, it is imperative for the success of Visitours that all entities on the system are genuine persons. However, the decentralised nature of it makes implementing traditional identity verification solutions very difficult, possibly even impossible to use. One example of such an attack is the Sybil attack; where one individual generates multiple online identities and then abuses the system by controlling a "group" of fake individuals. Going forward, the choice on how to deal with this will have ripple effects through the whole system. The design will likely require the adjustment of the amount of trust placed and rewards accumulated by new identities. Another possibility is to use a tiered system, or one similar to the web-of-trust construct favoured by open source communities. Certain types of cryptopuzzles, somewhat similar to the proof-of-work of conventional cryptocurrencies can also be used to make identity creation more costly and as such de-incentivising Sybil attacks, or perhaps a kind of collateral required to sign up. Inspiration on how to overcome some of these issues can be drawn from projects such as the PGP ecosystem, the distributed hash tables used in S/Kademlia or BitTorrent, or perhaps the content-addressable, distributed filesystem protocol of IPFS.
+
+- Signing parties?
+- Sybil attacks -- proof-of-work?
+- Tiered system?
+- Initial trust?
+- Payment/bond
+- Kernel of trust
+
+\subsubsection*{The question of data}
+ 
+"Information wants to be free" -- \textit{Stewart Brand}, 1984 \newline
+
+Another fundamental issue underpinning the Visitours platform is the issue of data ownership, handling, and storage. The whitepaper aptly identifies the issues associated with centralised data control and storage by the service. However, once we remove this centralised datastore and source of truth from the system, it becomes much more difficult to guarantee appropriate handling and usage of information. Relevant issues include verifying data authenticity, monitoring content for correctness, and ensuring that users' data is not abused or sold. If the data itself is committed to the blockchain, it becomes immutably present and cannot be modified or hidden in case that it is either found to be improper or if the user decides to restrict its usage. On the other hand, if there is no global, decentralised store of the data, then every user needs to remain permanently active to negotiate their own data use and provide it when needed. One possibility is to draw inspiration from the distributed systems similar to for instance the Mastedon social network or the git version control system. Reducing informational egress is also an issue: once the data has been surrendered to a non-trusted party, one cannot guarantee its appropriate use. Similarly, we tie back to the issue of identity; as trust must be established and verified somehow. Schemes such as the zero-knowledge Merkle proofs in Bitcoin and Ethereum, or the proofs-of-correctness of employed by zkSNARK proofs.
+
+The value proposition of the Visitours platform is inherently tied to managing and controlling certain types of informational asymmetry to empower the users with control to both their data and contributions, as well as the revenue and value added by them. Designing a coherent and sound system to correctly manipulate this informational asymmetry in order to reward users for valuable contributions is a very difficult task.
+
+- Prove authenticity
+- Not actually keep the data
+- Monetisation
+- Once information has been disclosed or transmitted, it cannot be controlled anymore, there is a strong element of trust
+- Want people to be paid for informational asymmetry
+
+- How to control data in a decentralised system? If it is committed to the blockchain or held by a central server, then it is either immutably there or there is an element of trust. How do we prevent data egress? 
+
+IPFS? zero-knowledge?
+
+
+\subsubsection*{The question of value}
+
+- Scrips
+- Backing of the currency
+- Frequent flyer
+- Inflation
+- What is valuable?
+
+
+
+
+
+We are also able to guide Visitours in their 
+
+They have a rough idea for a platform
+
+We can come in and help them figure out how to set up the incentives and the system to make it "sound" in the sense that ("mathematically sound incentive structures")
+
+How people can use the platform and prevent data abuse
+
+
+- Marketing strategy
+- Software details
+- Mathematical interaction details, platform design
+
+Our expertise is in the fields of mathematical optimisation, practical game theory, and security. We believe that 
+
+
+\subsection*{Closing Remarks}
+
+The Visitours platform is an exciting project aiming to solve a very appropriate problem through the use of cutting-edge blockchain technology. We believe that we have the expertise in game theory, blockchain, development, and systems design required to assist Visitours in realising their vision of a decentralised, smart travel community.
+
+\end{document}
